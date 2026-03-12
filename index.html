@@ -21,9 +21,29 @@ a{text-decoration:none;color:inherit;}
 .nav-links a:hover{opacity:1;}
 .get-support-btn{background:#c9956b;color:#fff;border:none;padding:10px 20px;border-radius:6px;font-size:14px;font-weight:600;cursor:pointer;}
 .get-support-btn:hover{background:#b8845a;}
-.hero{background:linear-gradient(135deg,#144a3d 0%,#1a5c4c 40%,#2d8a6e 100%);color:#fff;text-align:center;padding:48px 24px 32px;}
-.hero h1{font-size:32px;margin-bottom:8px;}
-.hero p{font-size:16px;opacity:0.85;}
+.section{max-width:900px;margin:0 auto;padding:48px 24px;}
+.section-title{font-size:28px;color:#144a3d;margin-bottom:8px;text-align:center;}
+.section-subtitle{font-size:15px;color:#666;text-align:center;margin-bottom:32px;}
+.section-divider{width:60px;height:3px;background:#c9956b;margin:0 auto 32px;border-radius:2px;}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:24px;}
+.about-card{background:#fff;border-radius:12px;padding:28px;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
+.about-card h3{color:#144a3d;margin-bottom:12px;font-size:18px;}
+.about-card p{font-size:14px;line-height:1.7;color:#555;}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.service-card{background:#fff;border-radius:12px;padding:24px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,0.06);transition:transform 0.2s;}
+.service-card:hover{transform:translateY(-4px);}
+.service-icon{width:56px;height:56px;background:#f0f4f3;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:24px;}
+.service-card h3{color:#144a3d;font-size:16px;margin-bottom:8px;}
+.service-card p{font-size:13px;color:#666;line-height:1.6;}
+.areas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.area-card{background:#fff;border-radius:10px;padding:20px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.06);font-size:16px;font-weight:600;color:#144a3d;transition:background 0.2s;}
+.area-card:hover{background:#144a3d;color:#fff;}
+.faq-item{background:#fff;border-radius:10px;padding:20px 24px;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
+.faq-item h3{color:#144a3d;font-size:16px;margin-bottom:8px;cursor:pointer;}
+.faq-item p{font-size:14px;color:#555;line-height:1.7;}
+.hero{background:linear-gradient(135deg,#144a3d 0%,#1a5c4c 40%,#2d8a6e 100%);color:#fff;text-align:center;padding:64px 24px 48px;}
+.hero h1{font-size:36px;margin-bottom:12px;}
+.hero p{font-size:18px;opacity:0.85;max-width:600px;margin:0 auto;}
 .main{max-width:720px;margin:0 auto;padding:32px 16px;}
 .form-card{background:#fff;border-radius:12px;padding:32px;box-shadow:0 2px 12px rgba(0,0,0,0.08);}
 .form-card .confidential{display:flex;align-items:center;gap:8px;color:#1a5c4c;font-size:13px;margin-bottom:24px;}
@@ -55,16 +75,20 @@ a{text-decoration:none;color:inherit;}
 .footer .copyright{font-size:12px;opacity:0.5;}
 .quick-exit{position:fixed;bottom:20px;right:20px;background:#c0392b;color:#fff;border:none;padding:10px 20px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;z-index:999;box-shadow:0 2px 8px rgba(0,0,0,0.3);}
 .quick-exit:hover{background:#a93226;}
+html{scroll-behavior:smooth;}
 @media(max-width:768px){
 .header{flex-wrap:wrap;height:auto;padding:12px 16px;}
 .nav-links{display:none;}
-.form-row{grid-template-columns:1fr;}
+.form-row,.about-grid{grid-template-columns:1fr;}
+.services-grid{grid-template-columns:1fr;}
+.areas-grid{grid-template-columns:1fr 1fr;}
 .checkbox-grid{grid-template-columns:1fr;}
 .hero h1{font-size:24px;}
 }
 </style>
 </head>
 <body>
+<!-- HEADER -->
 <header class="header">
 <div class="logo-area">
 <div class="logo-circle"><svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="30" cy="30" r="30" fill="#4a2d5e"/><ellipse cx="20" cy="28" rx="10" ry="20" fill="#6b4a82" opacity="0.7" transform="rotate(-25,20,28)"/><ellipse cx="40" cy="28" rx="10" ry="20" fill="#6b4a82" opacity="0.7" transform="rotate(25,40,28)"/><circle cx="30" cy="22" r="8" fill="#e8c9a8"/><path d="M22 35 Q30 45 38 35" stroke="#e8c9a8" stroke-width="2" fill="none"/></svg></div>
@@ -77,31 +101,145 @@ a{text-decoration:none;color:inherit;}
 <a href="#faq">FAQ</a>
 <a href="#refer">Refer</a>
 </nav>
-<button class="get-support-btn" onclick="document.querySelector('.main').scrollIntoView({behavior:'smooth'})">Get Support</button>
+<button class="get-support-btn" onclick="document.getElementById('refer').scrollIntoView({behavior:'smooth'})">Get Support</button>
 </header>
 
+<!-- HERO -->
 <section class="hero">
-<h1>Confidential Referral Form</h1>
-<p>Fill in as much or as little as you're comfortable with.</p>
+<h1>Your Help, Your Victory</h1>
+<p>Confidential mental health support for the Asian community across Yorkshire and the North of England.</p>
 </section>
 
+<!-- ABOUT -->
+<section id="about" class="section">
+<h2 class="section-title">About Nusarat</h2>
+<div class="section-divider"></div>
+<p class="section-subtitle">Nusarat means &ldquo;victory&rdquo; in Arabic. We believe every person deserves to find their victory over struggle, pain, and silence.</p>
+<div class="about-grid">
+<div class="about-card">
+<h3>&#128156; Our Mission</h3>
+<p>Nusarat provides free, confidential mental health and emotional support to individuals in the Asian community who may be experiencing abuse, cultural pressures, family conflict, or emotional distress. We understand the unique challenges faced by South Asian women, men, and young people.</p>
+</div>
+<div class="about-card">
+<h3>&#129309; Our Approach</h3>
+<p>We offer a culturally sensitive, non-judgmental space. Our trained support workers speak your language and understand your background. Whether you need someone to talk to, guidance through a crisis, or a confidential referral, we are here for you.</p>
+</div>
+<div class="about-card">
+<h3>&#128274; Confidentiality</h3>
+<p>Everything you share with us is 100% confidential. We will never contact your family, share your details, or take any action without your consent. Your safety and privacy are our top priority.</p>
+</div>
+<div class="about-card">
+<h3>&#127759; Community Focused</h3>
+<p>Based in Yorkshire and serving communities across the North of England, Nusarat works closely with local organisations, mosques, community centres, and healthcare providers to ensure support is accessible to those who need it most.</p>
+</div>
+</div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section" style="background:#fff;">
+<h2 class="section-title">Our Services</h2>
+<div class="section-divider"></div>
+<p class="section-subtitle">We provide a range of free, confidential support services tailored to your needs.</p>
+<div class="services-grid">
+<div class="service-card">
+<div class="service-icon">&#128172;</div>
+<h3>Emotional Support</h3>
+<p>One-to-one confidential listening sessions with a trained support worker who understands your culture and language.</p>
+</div>
+<div class="service-card">
+<div class="service-icon">&#128694;</div>
+<h3>Abuse Support</h3>
+<p>Help for those experiencing mental, physical, or psychological abuse. We can guide you through your options safely.</p>
+</div>
+<div class="service-card">
+<div class="service-icon">&#128106;</div>
+<h3>Family &amp; Marriage</h3>
+<p>Support with family conflict, in-law issues, marriage difficulties, and relationship pressures within the community.</p>
+</div>
+<div class="service-card">
+<div class="service-icon">&#127968;</div>
+<h3>Immigration Support</h3>
+<p>Guidance for those facing partner-related immigration issues, including spousal visa concerns and dependency situations.</p>
+</div>
+<div class="service-card">
+<div class="service-icon">&#128150;</div>
+<h3>Wellbeing &amp; Self-Image</h3>
+<p>Support for stress, body image issues, self-esteem, and cultural or religious identity confusion.</p>
+</div>
+<div class="service-card">
+<div class="service-icon">&#128222;</div>
+<h3>Crisis Helpline</h3>
+<p>If you are in immediate danger, we can help connect you with emergency services and provide urgent guidance.</p>
+</div>
+</div>
+</section>
+
+<!-- AREAS -->
+<section id="areas" class="section">
+<h2 class="section-title">Areas We Cover</h2>
+<div class="section-divider"></div>
+<p class="section-subtitle">We support individuals across Yorkshire and the North of England.</p>
+<div class="areas-grid">
+<div class="area-card">Bradford</div>
+<div class="area-card">Leeds</div>
+<div class="area-card">Huddersfield</div>
+<div class="area-card">Halifax</div>
+<div class="area-card">Keighley</div>
+<div class="area-card">Dewsbury</div>
+<div class="area-card">Wakefield</div>
+<div class="area-card">Sheffield</div>
+<div class="area-card">Manchester</div>
+</div>
+<p style="text-align:center;margin-top:20px;font-size:14px;color:#666;">Don&rsquo;t see your area? Contact us &mdash; we may still be able to help.</p>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section" style="background:#fff;">
+<h2 class="section-title">Frequently Asked Questions</h2>
+<div class="section-divider"></div>
+<div class="faq-item">
+<h3>Is this service really free?</h3>
+<p>Yes. Nusarat is a completely free service. You will never be charged for any support we provide.</p>
+</div>
+<div class="faq-item">
+<h3>Will my family find out?</h3>
+<p>No. Everything is 100% confidential. We will never contact your family or share your information with anyone without your explicit permission.</p>
+</div>
+<div class="faq-item">
+<h3>What languages do you support?</h3>
+<p>Our team can support you in English, Urdu, Punjabi, Bengali, Arabic, and other languages. Just let us know your preference.</p>
+</div>
+<div class="faq-item">
+<h3>How do I get support?</h3>
+<p>Simply fill in the referral form below. You can share as much or as little as you feel comfortable with. A member of our team will call you back at a time that suits you.</p>
+</div>
+<div class="faq-item">
+<h3>Can I refer someone else?</h3>
+<p>Yes. If you know someone who needs support, you can fill in the referral form on their behalf with their consent. Just let us know in the form.</p>
+</div>
+<div class="faq-item">
+<h3>What is the Quick Exit button?</h3>
+<p>The red &ldquo;Quick Exit&rdquo; button in the bottom corner will instantly take you to a safe website (Google) if you need to leave this page quickly for your safety.</p>
+</div>
+</section>
+
+<!-- REFER (FORM) -->
+<section id="refer">
+<div style="background:linear-gradient(135deg,#144a3d 0%,#1a5c4c 40%,#2d8a6e 100%);color:#fff;text-align:center;padding:48px 24px 32px;">
+<h1 style="font-size:32px;margin-bottom:8px;">Confidential Referral Form</h1>
+<p style="font-size:16px;opacity:0.85;">Fill in as much or as little as you're comfortable with.</p>
+</div>
 <main class="main">
 <div class="form-card">
 <div class="confidential"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Your information is 100% confidential.</div>
-
 <div class="form-group"><label>Preferred Name *</label><input type="text" placeholder="Name you'd like us to use"></div>
-
 <div class="form-group"><label>Contact Number *</label><input type="tel" placeholder="We'll call you back"></div>
-
-<div class="form-group"><label>Email (optional)</label><input type="email" placeholder=""></div>
-
+<div class="form-group"><label>Email (optional)</label><input type="email"></div>
 <div class="form-row">
 <div class="form-group"><label>Best Time to Call</label><select><option>Select time</option><option>Morning (9am-12pm)</option><option>Afternoon (12pm-5pm)</option><option>Evening (5pm-8pm)</option></select></div>
 <div class="form-group"><label>Preferred Language</label><select><option>English</option><option>Urdu</option><option>Punjabi</option><option>Bengali</option><option>Arabic</option><option>Other</option></select></div>
 </div>
-
 <div class="form-group"><label>Your Area</label><select><option>Select</option><option>Bradford</option><option>Leeds</option><option>Huddersfield</option><option>Halifax</option><option>Keighley</option><option>Dewsbury</option><option>Wakefield</option><option>Sheffield</option><option>Manchester</option><option>Other</option></select></div>
-
 <p class="checkbox-title">What Support Do You Need?</p>
 <div class="checkbox-grid">
 <label class="checkbox-item"><input type="checkbox"> Mental Abuse Support</label>
@@ -117,32 +255,23 @@ a{text-decoration:none;color:inherit;}
 <label class="checkbox-item"><input type="checkbox"> Just need someone to talk to</label>
 <label class="checkbox-item"><input type="checkbox"> Other</label>
 </div>
-
 <div class="form-group"><label>Tell Us More (optional)</label><textarea placeholder="Share as much or as little as you'd like..."></textarea></div>
-
 <div class="consent-box"><input type="checkbox" id="consent"><label for="consent"><strong>I understand this service is confidential.</strong> I consent to being contacted by the Nusarat team.</label></div>
-
-<button class="submit-btn" type="button">&#10148; Submit Confidential Referral</button>
+<button class="submit-btn">&#10148; Submit Confidential Referral</button>
 </div>
-
 <div class="emergency-bar">&#9888; <strong>In immediate danger?</strong> Call <strong>999</strong>. For urgent support: <strong>Samaritans 116 123</strong> (free, 24/7)</div>
 </main>
+</section>
 
+<!-- FOOTER -->
 <footer class="footer">
-<div class="footer-logo">
-<div class="logo-circle" style="width:32px;height:32px;"><svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="30" cy="30" r="30" fill="#4a2d5e"/><circle cx="30" cy="22" r="8" fill="#e8c9a8"/></svg></div>
-<span style="font-size:20px;font-weight:700;">Nusarat</span>
-</div>
-<p class="footer-tagline">Your Help - Your Victory</p>
-<p class="footer-desc">Confidential mental health support for the Asian community across Yorkshire and the North of England.</p>
+<div class="footer-logo"><div class="logo-circle" style="width:32px;height:32px;"><svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="30" cy="30" r="30" fill="#4a2d5e"/><circle cx="30" cy="22" r="8" fill="#e8c9a8"/></svg></div><span style="font-size:20px;font-weight:700;">Nusarat</span></div>
+<div class="footer-tagline">Your Help - Your Victory</div>
+<div class="footer-desc">Confidential mental health support for the Asian community across Yorkshire and the North of England.</div>
 <nav class="footer-nav">
-<a href="#about">About</a>
-<a href="#services">Services</a>
-<a href="#areas">Areas</a>
-<a href="#faq">FAQ</a>
-<a href="#refer">Refer</a>
+<a href="#about">About</a><a href="#services">Services</a><a href="#areas">Areas</a><a href="#faq">FAQ</a><a href="#refer">Refer</a>
 </nav>
-<p class="copyright">&copy; 2026 Nusarat. All rights reserved.</p>
+<div class="copyright">&copy; 2026 Nusarat. All rights reserved.</div>
 </footer>
 
 <button class="quick-exit" onclick="window.location='https://www.google.com'">Quick Exit</button>
